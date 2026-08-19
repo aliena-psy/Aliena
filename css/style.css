@@ -1,0 +1,563 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus, :active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+
+html {
+    scroll-behavior: smooth; /* Плавный скролл */
+}
+
+ 
+  .
+
+/* 4. ПОДПИСЬ BERLIN */
+.berlin-tag {
+    display: block;
+    text-align: center;
+    margin-top: -10px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 25px;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
+    text-transform: uppercase;
+}
+
+/* 1. ОБНУЛЯЕМ BODY (здесь анимации БЫТЬ НЕ ДОЛЖНО) */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 2. СОЗДАЕМ СЛОЙ ДЛЯ ФОНА (ДВИГАЕТСЯ ТОЛЬКО ОН) */
+body::before {
+    content: "";
+    position: fixed; /* Фиксируем на весь экран */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* ТВОЕ ФОТО */
+    background-image: url(../img/ozora-festival.jpg); 
+    background-size: cover;
+    background-position: center;
+    
+    /* АНИМАЦИЯ (ДВИЖЕНИЕ ТОЛЬКО ДЛЯ ФОНА) */
+    animation: backgroundfly 20s infinite alternate ease-in-out;
+    
+    /* УВОДИМ ПОД КОНТЕНТ */
+    z-index: -1; 
+    pointer-events: none; /* Чтобы фон не мешал кликать по кнопкам */
+}
+
+/* 3. НАСТРОЙКА ДВИЖЕНИЯ (МЯГКИЙ ЗУМ И СДВИГ) */
+@keyframes backgroundfly {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        transform: scale(1.1) translateY(-40px); /* Слегка увеличиваем и приподнимаем */
+    }
+}
+
+/* 4. ЗАЩИТА КОНТЕНТА (ЧТОБЫ ОН НЕ ДВИГАЛСЯ) */
+.main-wrapper, .navbar, .aliena, .release-center-wrapper {
+    position: relative;
+    z-index: 1; /* Поднимаем контент над фоном */
+    transform: none !important; /* ЗАПРЕЩАЕМ контенту двигаться */
+}
+
+
+
+ 
+.navbar {
+    position: fixed; /* Меню всегда сверху при скролле */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 50px; /* Большие отступы для "воздуха" */
+    display: flex;
+    justify-content: center; /* Центрируем ссылки */
+    z-index: 10000; /* Самый верхний слой над зерном */
+    background: transparent; /* Оставляем прозрачным для стиля */
+}
+
+.nav-links {
+    display: flex;
+    gap: 60px; /* Большое расстояние между пунктами */
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 11px; /* Маленький размер — это очень модно */
+    text-transform: uppercase;
+    letter-spacing: 0.4em; /* Экстремальный разлет букв */
+    font-weight: 400;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.6);
+    color: white ;
+}
+
+.nav-links a:hover {
+    opacity: 0.5; /* Эффект при наведении */
+}
+
+/* Изменяем цвет меню для Hero секции, если там темно */
+.hero h1 {
+    margin-top: 60px; /* Чтобы заголовок не налезал на меню */
+}
+
+
+
+.aliena-footer{
+color: black;	font-size: 20px; text-align: center; 
+}
+.last-release{
+
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 900; /* Максимальная жирность */
+    font-size: 2.5rem; /* Крупный размер */
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 12px; /* Техно-разлет букв */
+    color: #fff;
+    margin-bottom: 40px;
+    position: relative;
+    
+    /* ТЕМНАЯ ПОДЛОЖКА (чтобы отделить от фото) */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    padding: 20px 0;
+    width: 100%;
+    
+    /* МОЩНОЕ СВЕЧЕНИЕ БУКВ */
+    text-shadow: 0 0 10px #ff00ff, 
+                 0 0 30px #ff00ff, 
+                 0 0 60px rgba(255, 0, 255, 0.5);
+    
+    /* ГРАНИЦЫ СВЕРХУ И СНИЗУ */
+    border-top: 1px solid rgba(255, 0, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 0, 255, 0.5);
+}
+  
+
+
+.neon-button {
+    display: inline-block;
+    padding: 20px 30px; /* Оптимальный размер */
+    margin: 25px 0;
+  
+
+    /* СКРУГЛЕННЫЕ КРАЯ (КАПСУЛА) */
+    border-radius: 50px; 
+
+    /* ЭФФЕКТ СТЕКЛА (КАК У СОЦСЕТЕЙ) */
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 0, 255, 0.6); /* Розовая тонкая рамка */
+
+    /* ОБЪЕМ И НЕОН */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                0 0 15px rgba(255, 0, 255, 0.3);
+    
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ */
+.neon-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(255, 0, 255, 0.15); 
+    border-color: #ff00ff;
+    color: #ff00ff; /* Текст становится розовым при наведении */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 
+                0 0 30px #ff00ff;
+}
+
+/* БЛИК (КАК У СОЦСЕТЕЙ) */
+.neon-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.6s;
+}
+
+.neon-button:hover::before {
+    left: 150%;
+}
+  
+
+.release-link{
+
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 16px;
+    text-transform: uppercase;
+    color: #ff00ff;
+    text-decoration: none;
+    border-bottom: 1px solid #ff00ff;
+    padding: 15px 0;
+    transition: 0.5s;
+    position: relative;
+}
+
+
+
+
+
+.cover-art-wrapper{
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+    gap: 100px; /* Расстояние между кнопкой и обложкой */
+   
+}
+
+.cover-art {
+    position: relative;
+    width: 5px;  /* Оптимальный размер для футера */
+    height: 5px;
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.cover-art {
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Тонкая розовая рамка */
+    
+    /* Изначально делаем чуть темнее и ч/б (стиль Шарлотты) */
+    filter: grayscale(100%) brightness(0.8);
+    transition: all 0.5s ease;
+    z-index: 2;
+    position: relative;
+}
+
+/* РОЗОВОЕ НЕОНОВОЕ СВЕЧЕНИЕ СЗАДИ */
+.glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 110%;
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.3) 0%, transparent 70%);
+    filter: blur(20px);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 10s ease;
+    
+}
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА ВСЮ СЕКЦИЮ */
+.cover-art:hover {
+    filter: grayscale(0%) brightness(1.1); /* Проявляется цвет (Psy-вайб) */
+    border-color: #ff00ff;
+}
+
+
+
+.cover-art:hover {
+    transform: scale(2) translateY(-10px); /* Картинка слегка увеличивается */
+}
+
+
+.footer-socials a {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* ЭФФЕКТ СТЕКЛА (Объем) */
+    background: rgba(255, 255, 255, 0.05); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px); /* Размывает фото фестиваля ВНУТРИ кнопки */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Тонкая грань */
+    border-radius: 50px; /* Скругленные края дают объем */
+
+    /* ТЕНИ И НЕОН */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), /* Глубокая тень (эффект подъема) */
+                0 0 10px rgba(255, 0, 255, 0.2); /* Мягкое розовое свечение */
+    
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Плавный отскок */
+    position: relative;
+    overflow: hidden;
+}
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ (Кнопка оживает) */
+.footer-socials a:hover {
+    transform: translateY(-5px) scale(1.05); /* Кнопка «выпрыгивает» на пользователя */
+    background: rgba(255, 0, 255, 0.1); /* Розовый оттенок стекла */
+    border-color: #ff00ff; /* Яркая неоновая рамка */
+    color: #ff00ff; /* Текст становится розовым */
+    
+    /* Усиливаем неон */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), 
+                0 0 30px #ff00ff; 
+}
+
+/* БЛИК (Эффект проходящего света) */
+.footer-socials a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.6s;
+}
+
+.footer-socials a:hover::before {
+    left: 150%; /* Блик пробегает по кнопке при наведении */
+}
+
+.footer-socials {
+    display: flex;             /* Включаем гибкую сетку */
+    justify-content: center;   /* Центрируем по горизонтали */
+    align-items: center;       /* Центрируем по вертикали */
+    
+    margin-top: 500px;         /* Отступ сверху от обложки релиза */
+    padding-bottom: 50px;      /* Отступ от самого края экрана снизу */
+    
+    width: 100%;               /* Растягиваем контейнер на всю ширину */
+}
+
+.footer-socials a {
+    margin: 0 60px; /* 0 сверху/снизу, 30px слева/справа */
+}
+
+
+
+.logo-aliena {
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    margin-top: 75px;       /* Отступ от обложки вниз */
+    padding-bottom: 0px;
+
+    filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.3));
+    
+    transition: all 0.4s ease;
+   
+    transform: scale(1.05);
+    
+    /* Двойной drop-shadow: первый делает контур четким, второй — создает облако света вокруг */
+    filter: drop-shadow(0 0 20px rgba(0, 255, 0, 2)) 
+            drop-shadow(0 0 80px rgba(0, 255, 0, 10));
+
+}
+
+.logo-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo {
+    width: 400px;           /* Регулируй размер здесь */
+    height: auto;
+    cursor: pointer;
+    
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ */
+.logo-link:hover .footer-logo {
+    filter: grayscale(0) brightness(2.5);
+    /* Лого оживает: становится цветным, ярким и светится розовым */
+    transform: scale(1.5); /* Легкое увеличение */
+}
+
+/* ЭФФЕКТ ПРИ НАЖАТИИ */
+.logo-link:active .footer-logo {
+    transform: scale(0.95); /* Лого "вдавливается" при клике */
+    filter: brightness(2.5) ;
+}
+
+
+/* ОБЩИЙ КЛАСС ДЛЯ ТЕХНИЧЕСКИХ НАДПИСЕЙ (Berlin и Copyright) */
+.berlin-tag, .copyright {
+    display: block;
+    width: 100%;             /* Растягиваем на всю ширину для точного центра */
+    text-align: center;      /* Строго по центру */
+    font-family: 'Inter', sans-serif; 
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 1); /* Полупрозрачный белый (техно-стиль) */
+    transition: all 0.4s ease;
+}
+
+/* СПЕЦИФИКА ДЛЯ BERLIN (под логотипом) */
+.berlin-tag {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 20px;    /* Широкий разлет */
+    margin-top: 15px;        /* Отступ от ALIENA */
+    margin-bottom: 50px;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+    font-weight: bold;
+}
+
+/* СПЕЦИФИКА ДЛЯ COPYRIGHT (в самом низу) */
+.copyright {
+    font-size: 10px;         /* Чуть меньше, чем Berlin */
+    font-weight: 300;
+    letter-spacing: 12px;    /* Тоже широкий разлет, но чуть меньше берлинского */
+    padding: 60px 0 40px 0;  /* Большой отступ сверху, чтобы отделить от контента */
+    opacity: 1;
+}
+
+
+
+
+
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 20px;
+    }
+    .navbar {
+        padding: 20px;
+    }
+    .nav-links a {
+        font-size: 9px;
+        letter-spacing: 0.2em;
+    }
+body::after {
+    content: "";
+    display: block;
+    height: 150vh; /* Увеличиваем высоту страницы на 1.5 экрана */
+    width: 100%;
+    pointer-events: none;
+}
+
+/* Фиксируем фон, чтобы он не уезжал при прокрутке */
+body {
+    background-attachment: fixed;
+}
+
+/* Начальное состояние: текст прозрачный и чуть ниже */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Состояние, когда текст "проявился" */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, #1a1a1a, transparent);
+    animation: pulse-line 2s infinite;
+}
+
+
+
+
+.photo-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50x 0; /* Отступы сверху и снизу */
+    /* Деликатное белое свечение */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+    
+    transition: all 0.4s ease;
+}
+
+.photo-section:hover {
+    transform: scale(1.03); /* Фотография чуть-чуть увеличится */
+    
+    /* Пышное, глубокое свечение вокруг круга */
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.4), 
+                0 0 80px rgba(255, 255, 255, 0.1);
+
+}
+
+
+
+
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 30px 0;
+    background: rgba(255, 255, 255, 0.05); /* Едва заметный белый */
+    backdrop-filter: blur(10px); /* Эффект матового стекла */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    min-height: 100vh; /* Занимает минимум 100% высоты экрана */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрирует твой контент по вертикали */
+    align-items: center;
+}
+
+
